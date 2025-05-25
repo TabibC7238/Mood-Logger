@@ -5,6 +5,8 @@ from oauth2client.service_account import ServiceAccountCredentials
 import pandas as pd
 import plotly.express as px
 from datetime import datetime, date
+import json
+import os
 
 # ---- GOOGLE SHEETS AUTH ----
 scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
