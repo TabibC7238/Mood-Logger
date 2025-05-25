@@ -7,6 +7,7 @@ import plotly.express as px
 from datetime import datetime, date
 import json
 import os
+from pytz import timezone
 
 # ---- GOOGLE SHEETS AUTH ----
 scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
@@ -26,7 +27,8 @@ note = st.text_input("Optional note")
 submit = st.button("Submit")
 
 if submit:
-    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    local_tz = timezone("US/Eastern")  # or "America/New_York"
+    timestamp = datetime.now(local_tz).strftime("%Y-%m-%d %H:%M:%S")
     sheet.append_row([timestamp, mood, note])
     st.success("Mood logged successfully!")
 
